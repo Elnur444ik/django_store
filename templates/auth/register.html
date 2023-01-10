@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Страница регистрации</h4>
+			<div class="site-pagination">
+				<a href="{% url 'store' %}">Главная страница</a> /
+				<a href="{% url 'login' %}">Войти</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- checkout section  -->
+	<section class="checkout-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-2 order-lg-1">
+					<form method="post" action="{% url 'register' %}" class="checkout-form">
+						{% csrf_token %}
+						<div class="cf-title">Введите данные для регистрации</div>
+						<div class="row address-inputs">
+							<div class="col-md-12">
+								<span> {{ fields.errors }}</span>
+								<input type="text" placeholder="Введите имя" id="id_first_name" name="first_name">
+								<input type="text" placeholder="Введите фамилию" id="id_last_name" name="last_name">
+								<input type="text" placeholder="Адрес электронной почты" id="id_email"
+									   name="email">
+								<input type="text" placeholder="Имя пользователя" id="id_username"
+									   name="username">
+							</div>
+							<div class="col-md-6">
+								<input type="password" placeholder="Пароль" id="id_password" name="password">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Подтверждение пароля" id="id_password2"
+									   name="password2">
+							</div>
+						</div>
+						<button class="site-btn submit-order-btn">Регистрация</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- checkout section end -->
+
+{% endblock content %}

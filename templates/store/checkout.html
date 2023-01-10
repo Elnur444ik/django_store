@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Заказ</h4>
+			<div class="site-pagination">
+				<a href="{% url 'store' %}">Главная страница</a> /
+				<a href="{% url 'cart' %}">К корзине</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- checkout section  -->
+	<section class="checkout-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-2 order-lg-1">
+					<form class="checkout-form">
+						<div class="cf-title">Адрес доставки</div>
+						<div class="row address-inputs">
+							<div class="col-md-12">
+								<input type="text" placeholder="Область/республика">
+								<input type="text" placeholder="Город">
+								<input type="text" placeholder="Улица, дом, корпус, квартира">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Индекс">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Номер телефона">
+							</div>
+						</div>
+						<div class="cf-title">Способ доставки</div>
+						<div class="row shipping-btns">
+							<div class="col-6">
+								<h4>Стандартная</h4>
+							</div>
+							<div class="col-6">
+								<div class="cf-radio-btns">
+									<div class="cfr-item">
+										<input type="radio" name="shipping" id="ship-1">
+										<label for="ship-1">Бесплатно</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<h4>Курьерской службой </h4>
+							</div>
+							<div class="col-6">
+								<div class="cf-radio-btns">
+									<div class="cfr-item">
+										<input type="radio" name="shipping" id="ship-2">
+										<label for="ship-2">1000 руб.</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cf-title">Способ оплаты</div>
+						<ul class="payment-list">
+							<li>Paypal<a href="#"><img src="{% static 'images/paypal.png' %}" alt=""></a></li>
+							<li>Банковской картой<a href="#"><img src="{% static 'images/mastercart.png' %}" alt=""></a></li>
+							<li>Оплата при получении</li>
+						</ul>
+						<button class="site-btn submit-order-btn">К оплате</button>
+					</form>
+				</div>
+				<div class="col-lg-4 order-1 order-lg-2">
+					<div class="checkout-cart">
+						<h3>Ваши покупки</h3>
+						<ul class="product-list">
+							<li>
+								<div class="pl-thumb"><img src="{% static 'images/cart/1.jpg' %}" alt=""></div>
+								<h6>Animal Print Dress</h6>
+								<p>3000 руб.</p>
+							</li>
+							<li>
+								<div class="pl-thumb"><img src="{% static 'images/cart/2.jpg' %}" alt=""></div>
+								<h6>Animal Print Dress</h6>
+								<p>3000 руб.</p>
+							</li>
+						</ul>
+						<ul class="price-list">
+							<li>Итого<span>6000 руб.</span></li>
+							<li>Доставка<span>Бесплатно</span></li>
+							<li class="total">Итого<span>6000 руб.</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- checkout section end -->
+
+{% endblock content %}

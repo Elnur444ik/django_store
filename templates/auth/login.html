@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Страница входа</h4>
+			<div class="site-pagination">
+				<a href="{% url 'store' %}">Главная страница</a> /
+				<a href="{% url 'register' %}">Регистрация</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- checkout section  -->
+	<section class="checkout-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-2 order-lg-1">
+					<form  method="post" action="{% url 'login' %}" class="checkout-form">
+						<div class="cf-title">Введите данные для входа</div>
+						<div class="row address-inputs">
+							<div class="col-md-12">
+								<input type="text" placeholder="Логин" id="id_username" name="username">
+								<input type="password" placeholder="Пароль" id="id_password" name="password">
+							</div>
+						</div>
+						{% csrf_token %}
+						{% for error in login_form.non_field_errors %}
+							<p style="color: red"> * {{ error }} </p>
+						{% endfor %}
+						<button class="site-btn submit-order-btn">Войти</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- checkout section end -->
+
+{% endblock content %}
