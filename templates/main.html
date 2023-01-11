@@ -59,7 +59,7 @@
 							<div class="up-item">
 								<i class="flaticon-profile"></i>
 								{% if user.is_authenticated %}
-									<a>{{ user.username }}</a> | <a href="{% url 'logout' %}">
+									<a>{{ user.email }}</a> | <a href="{% url 'logout' %}">
 									Выйти</a>
 								{% else %}
 									<a href="{% url 'login' %}">Войти</a> или <a href="{% url 'register' %}">
