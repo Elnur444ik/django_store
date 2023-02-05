@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # --- my apps ---
     'django.contrib.postgres',
     'authentication',
-    'store',
+    'store.apps.StoreConfig',
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'

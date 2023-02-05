@@ -1,14 +1,27 @@
+from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 
-from authentication.forms import LoginForm, RegisterForm
+from authentication.forms import LoginForm
 
 
-def login_user(request):
-    context = {'login_form': LoginForm}
-    if request.method == 'POST':
+# class LoginUser(LoginView):
+#     form_class = LoginForm
+#     template_name = 'auth/login.html'
+
+
+class LoginUser(TemplateView):
+    template_name = 'auth/login.html'
+
+    def post(self, request):
+        context = {'login_form': LoginForm}
         login_form = LoginForm(request.POST)
+        print('hello')
+        print(login_form)
         if login_form.is_valid():
             email = login_form.cleaned_data['email']
             password = login_form.cleaned_data['password']
@@ -16,17 +29,16 @@ def login_user(request):
             if user:
                 login(request, user)
                 return redirect('store')
-            else:
-                context = {
-                    'login_form': login_form,
-                    'attention': f'Пользователь с таким логином и паролем не был найден',
-                }
+            return render(request, 'auth/login.html', context)
         else:
             context = {
                 'login_form': login_form,
             }
+            return render(request, 'auth/login.html', context)
 
-    return render(request, 'auth/login.html', context)
+    def get(self, request):
+        context = {'login_form': LoginForm}
+        return render(request, 'auth/login.html', context)
 
 
 class RegisterView(TemplateView):
